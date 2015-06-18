@@ -1,6 +1,4 @@
-
 var path = require('path');
-var webpack = require('webpack');
 
 var webpackConfig = {
   devtool: 'inline-source-map',

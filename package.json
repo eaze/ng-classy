@@ -2,19 +2,23 @@
   "name": "ng-classy",
   "version": "0.0.3",
   "scripts": {
-    "test": "./node_modules/.bin/karma start",
-    "test-watch": "./node_modules/.bin/karma start --single-run=false"
+    "test": "karma start",
+    "test-watch": "karma start --single-run=false",
+    "cov": "rm -rf ./coverage && node ./node_modules/karma/bin/karma start ./karma.conf.js --single-run --reporters coverage"
   },
   "main": "lib/index.js",
   "devDependencies": {
     "angular-mocks": "^1.4.x",
-    "babelify": "^6.1.2",
+    "babel-loader": "^5.1.4",
     "chai": "^3.0.0",
+    "isparta": "^3.0.3",
+    "isparta-loader": "^0.2.0",
+    "istanbul": "^0.3.15",
     "karma": "^0.12.36",
-    "karma-babel-preprocessor": "^5.2.1",
-    "karma-browserify": "^4.2.1",
     "karma-chrome-launcher": "^0.1.12",
+    "karma-coverage": "^0.4.2",
     "karma-mocha": "^0.1.10",
+    "karma-webpack": "^1.5.1",
     "mocha": "^2.2.5"
   },
   "dependencies": {

@@ -1,7 +1,7 @@
 # ng-classy
 
 ```
-npm install ng-classy
+npm install ng-classy --save-dev
 ```
 
 An opinionated cure to angular 1's ES6 problems.
@@ -32,7 +32,7 @@ export default angular.module('myComponent', [
   directiveTwoModule.name,
   serviceOneModule.name,
 ])
-  // Make a state that maps to our component in a decoupled manner, 
+  // Make a state that maps to our component in a decoupled manner,
   // so our component is reusable outside the state.
   // Much boilerplate.
   .config(($stateProvider) => {
@@ -62,7 +62,7 @@ class MyComponent {
 }
 ```
 
-Let's fix this situation. 
+Let's fix this situation.
 
 - We don't care about angular module dependencies. ES6 handles dependencies for us.
 - Let's just make everything that's imported be put onto one global angular module.  Only what we explicitly load via ES6 imports will be loaded by Angular.
@@ -85,10 +85,10 @@ import {Component, State} from 'ng-classy';
   url: 'url/:param'
 })
 export class MyComponent {
-  // Creates a <my-component> element directive, using the class as a 
+  // Creates a <my-component> element directive, using the class as a
   // controller and `controllerAs: 'vm'`
 
-  // Additionally creates a state whose template is 
+  // Additionally creates a state whose template is
   // '<my-component param="$stateParams.param"></my-component>'.
 }
 ```
@@ -150,7 +150,7 @@ class MyService {
   bind: {
    color: '='
   },
-  template: 'some template with a binding to color {{vm.color}}' 
+  template: 'some template with a binding to color {{vm.color}}'
  })
 class MyComponent {
 }

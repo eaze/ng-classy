@@ -1,6 +1,7 @@
 {
   "name": "ng-classy",
-  "version": "0.0.4",
+  "version": "0.0.5",
+  "main": "lib/index.js",
   "repository": {
     "url": "git://github.com/eaze/ng-classy.git"
   },
@@ -8,7 +9,6 @@
     "test": "./node_modules/.bin/karma start",
     "test-watch": "./node_modules/.bin/karma start --single-run=false"
   },
-  "main": "lib/index.js",
   "devDependencies": {
     "angular-mocks": "^1.4.x",
     "babelify": "^6.1.2",

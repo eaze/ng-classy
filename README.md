@@ -104,6 +104,7 @@ To use ng-classy in your app, do the following:
 
 ```js
 import classy from 'ng-classy';
+import {MyComponent} from './path/to/myComponent';
 // Assuming `ng-app="myApp"` exists somewhere...
 angular.module('myApp', [
   classy.app.name
@@ -173,5 +174,23 @@ class MyComponent {
   url: 'url/:someParam'
 })
 class SomeComponent {
+}
+```
+
+## Templates
+
+If you want to separate your templates into a different file from your
+component, use a browserify transform or the webpack `html-loader` module.
+
+```js
+import template from './template.html';
+
+@Component({
+  bind: {
+    param: '='
+  },
+  template: template
+})
+class MyComponent {
 }
 ```

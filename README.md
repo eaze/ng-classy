@@ -104,6 +104,7 @@ To use ng-classy in your app, do the following:
 
 ```js
 import classy from 'ng-classy';
+import {MyComponent} from './path/to/myComponent';
 // Assuming `ng-app="myApp"` exists somewhere...
 angular.module('myApp', [
   classy.app.name
@@ -173,5 +174,41 @@ class MyComponent {
   url: 'url/:someParam'
 })
 class SomeComponent {
+}
+```
+
+## Templates
+
+If you want to separate your templates into a different file from your
+component, use the webpack `html-loader` module.
+
+```
+npm install html-loader --save-dev
+```
+
+```javascript
+// Importing these causes them to implicitly be defined as dependencies on our angular module.
+import {serviceOne} from '../service-one';
+import {serviceTwo} from '../service-two';
+import {directiveOne} from '../directive-one';
+import {Component, State} from 'ng-classy';
+
+import template from 'html!./template.html';
+
+@Component({
+  bind: {
+    param: '='
+  },
+  template: template
+})
+@State('myComponentState', {
+  url: 'url/:param'
+})
+export class MyComponent {
+  // Creates a <my-component> element directive, using the class as a
+  // controller and `controllerAs: 'vm'`
+
+  // Additionally creates a state whose template is
+  // '<my-component param="$stateParams.param"></my-component>'.
 }
 ```

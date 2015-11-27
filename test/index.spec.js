@@ -37,14 +37,15 @@ describe('ngClassy', () => {
 
   it('Component with State should pass stateParams to component attributes', () => {
     @classy.Component({
-      template: '<div>param1={{vm.param1}}, param2={{vm.param2}}</div>',
+      template: '<div>param1={{vm.param1}}, param2={{vm.param2}}, param3={{vm.param3}}</div>',
       bind: {
         param1: '=',
-        param2: '='
+        param2: '=',
+        param3: '='
       }
     })
     @classy.State('superState', {
-      url: '/super/:param1/:param2'
+      url: '/super/:param1/:param2?param3'
     })
     class SuperComponent {
     }
@@ -54,12 +55,13 @@ describe('ngClassy', () => {
       $rootScope.$apply();
       $state.go('superState', {
         param1: 'valueOne',
-        param2: 'valueTwo'
+        param2: 'valueTwo',
+        param3: 'valueThree'
       });
       $rootScope.$apply();
       console.log(app);
       expect(app.find('super-component').length).to.equal(1);
-      expect(app.find('super-component').text()).to.equal('param1=valueOne, param2=valueTwo');
+      expect(app.find('super-component').text()).to.equal('param1=valueOne, param2=valueTwo, param3=valueThree');
     });
   });
 
@@ -71,4 +73,35 @@ describe('ngClassy', () => {
       }
     }).to.throw();
   });
+
+  it('should allow binding states resolves to the component', () => {
+
+    @classy.Component({
+      template: '<div>resolve1={{vm.resolve1}}</div>',
+      bind: {
+        resolve1: '='
+      }
+    })
+    @classy.State('resolveState', {
+      url: '/resolve',
+      resolve: {
+        resolve1: ($q) => {
+          return $q.when('resolveValueOne');
+        }
+      }
+    })
+    class ResolveComponent {
+    }
+
+    inject(($compile, $state, $rootScope) => {
+      let app = $compile('<div><ui-view></ui-view></div>')($rootScope);
+      $rootScope.$apply();
+      $state.go('resolveState');
+      $rootScope.$apply();
+      expect(app.find('resolve-component').length).to.equal(1);
+      expect(app.find('resolve-component').text()).to.equal('resolve1=resolveValueOne');
+    });
+
+  });
+
 });

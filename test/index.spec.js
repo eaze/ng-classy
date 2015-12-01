@@ -21,7 +21,8 @@ describe('ngClassy', () => {
 
   it('Component', () => {
     @classy.Component({
-      template: '<div>the color is {{color}}</div>'
+      template: '<div>the color is {{color}}</div>',
+      selector: 'my-color'
     })
     class MyComponent {
       constructor($scope) {
@@ -29,8 +30,9 @@ describe('ngClassy', () => {
       }
     }
     inject(($compile, $rootScope) => {
-      let el = $compile('<my-component>')($rootScope)
+      let el = $compile('<my-color>')($rootScope)
       $rootScope.$apply()
+      console.log(el)
       expect(el.text()).to.equal('the color is blue')
     })
   })

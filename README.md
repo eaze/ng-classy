@@ -76,6 +76,7 @@ import {directiveOne} from '../directive-one';
 import {Component, State} from 'ng-classy';
 
 @Component({
+  // selector: 'custom-selectors-work-too',
   bind: {
     param: '='
   },

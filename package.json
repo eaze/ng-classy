@@ -1,6 +1,6 @@
 {
   "name": "ng-classy",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "repository": {
     "url": "git://github.com/eaze/ng-classy.git"

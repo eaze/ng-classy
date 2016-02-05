@@ -21,7 +21,7 @@
     "mocha": "^2.2.5"
   },
   "dependencies": {
-    "angular": "1.4.x",
+    "angular": "1.x",
     "angular-ui-router": "0.2.15"
   }
 }

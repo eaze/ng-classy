@@ -160,7 +160,7 @@ class MyComponent {
 /*
  * # @classy.State(name, options)
  * Must be called after `@classy.Component()` on a class.
- * Registers a new state with the the given name and state options.
+ * Registers a new state with the given name and state options.
  * The template will default to instantiating the given component with the url parameters as attributes.
  * See the example at the beginning of the README.
  */
